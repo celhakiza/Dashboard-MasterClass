@@ -3,7 +3,12 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Welcome to the Page")
+    stats={
+            'users':150,
+            'Revenue': 200,
+            'Errors':5
+    }
+    return render(request,'main/index.html',stats)
 
 def intro(request):
     return HttpResponse("We are done!!")
