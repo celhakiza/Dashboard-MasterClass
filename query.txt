@@ -1,0 +1,60 @@
+INSERT INTO main_transaction (name, amount, status, created_at) VALUES
+('Enterprise Plan', 499.99, 'Paid', '2025-06-26 20:15:33.123456+02'),
+('Premium Upgrade', 99.99, 'Paid', '2025-06-26 19:22:45.234567+02'),
+('Basic Subscription', 29.99, 'Pending', '2025-06-26 18:05:12.345678+02'),
+('Add-on Storage', 14.99, 'Failed', '2025-06-26 17:30:00.456789+02'),
+('Team License', 199.99, 'Paid', '2025-06-26 16:18:27.567890+02'),
+('API Access Pack', 49.99, 'Paid', '2025-06-26 15:42:19.678901+02'),
+('Consulting Hours', 150.00, 'Pending', '2025-06-26 14:55:44.789012+02'),
+('Training Workshop', 299.99, 'Paid', '2025-06-26 13:23:38.890123+02'),
+('Custom Dashboard', 999.99, 'Pending', '2025-06-26 12:37:51.901234+02'),
+('Data Export', 9.99, 'Failed', '2025-06-26 11:19:07.012345+02'),
+('Priority Support', 24.99, 'Paid', '2025-06-25 20:15:33.123456+02'),
+('Mobile App Add-on', 19.99, 'Paid', '2025-06-25 19:22:45.234567+02'),
+('Annual Renewal', 349.99, 'Pending', '2025-06-25 18:05:12.345678+02'),
+('Analytics Module', 79.99, 'Failed', '2025-06-25 17:30:00.456789+02'),
+('White Label License', 499.99, 'Paid', '2025-06-25 16:18:27.567890+02');
+
+-- Users
+INSERT INTO main_user (name, email, phone, created_at) VALUES
+('Emma Wilson', 'emma.w@example.com', '+49123456789', '2025-06-26 09:15:33.123456+02'),
+('James Miller', 'james.m@example.com', '+49876543210', '2025-06-25 14:22:45.234567+02'),
+('Sophia Garcia', 'sophia.g@example.com', '+49111222333', '2025-06-24 11:05:12.345678+02'),
+('Liam Johnson', 'liam.j@example.com', '+49444555666', '2025-06-23 16:30:00.456789+02'),
+('Olivia Smith', 'olivia.s@example.com', '+49777888999', '2025-06-22 10:18:27.567890+02'),
+('Noah Williams', 'noah.w@example.com', '+49123459876', '2025-06-21 13:42:19.678901+02'),
+('Ava Brown', 'ava.b@example.com', '+49876541230', '2025-06-20 08:55:44.789012+02'),
+('William Jones', 'william.j@example.com', '+49112233445', '2025-06-19 17:23:38.890123+02'),
+('Isabella Davis', 'isabella.d@example.com', '+49665544332', '2025-06-18 12:37:51.901234+02'),
+('Benjamin Taylor', 'benjamin.t@example.com', '+49776655443', '2025-06-17 15:19:07.012345+02');
+
+-- Errors
+INSERT INTO main_error (title, description, created_at) VALUES
+('Database Connection', 'Failed to connect to primary DB server', '2025-06-26 20:09:12.597755+02'),
+('Payment Gateway Timeout', '30s timeout processing transaction', '2025-06-26 18:45:33.123456+02'),
+('Invalid User Input', 'Malformed request parameters', '2025-06-26 12:30:45.234567+02'),
+('Cache Miss', 'High cache miss rate detected', '2025-06-25 22:15:12.345678+02'),
+('API Rate Limit', 'Exceeded third-party API quota', '2025-06-25 16:40:00.456789+02'),
+('Memory Leak', 'Application memory usage growing', '2025-06-24 09:25:27.567890+02'),
+('SSL Handshake Failed', 'Could not establish secure connection', '2025-06-24 03:10:19.678901+02'),
+('File Upload Failed', 'Storage quota exceeded', '2025-06-23 19:55:44.789012+02'),
+('Email Delivery', 'SMTP server unavailable', '2025-06-23 14:20:38.890123+02'),
+('Session Expired', 'Multiple premature session expirations', '2025-06-22 08:15:51.901234+02');
+
+-- Sessions
+INSERT INTO main_session (title, description, created_at) VALUES
+('Bootstrap Dashboard Design', 'Building responsive admin templates with Bootstrap 5', '2025-06-26 10:30:00.000000+02'),
+('Django CRUD Operations', 'Implementing Create-Read-Update-Delete in Django views', '2025-06-25 14:15:22.111111+02'),
+('PostgreSQL Optimization', 'Tuning queries for dashboard performance', '2025-06-25 11:20:33.222222+02'),
+('AJAX Form Handling', 'Submitting forms without page reloads', '2025-06-24 16:45:44.333333+02'),
+('CSS Grid for Dashboards', 'Modern layout techniques for data visualization', '2025-06-24 09:10:55.444444+02'),
+('JavaScript Data Binding', 'Real-time updates with Fetch API', '2025-06-23 15:30:11.555555+02'),
+('Django Model Design', 'Structuring models for analytics applications', '2025-06-23 13:25:22.666666+02'),
+('Bootstrap Card Components', 'Building dashboard cards with animations', '2025-06-22 17:40:33.777777+02'),
+('Django-PostgreSQL Connection', 'Configuring optimal database settings', '2025-06-22 10:35:44.888888+02'),
+('Dynamic Form Validation', 'Client-side + server-side validation techniques', '2025-06-21 14:50:55.999999+02'),
+('Chart.js Integration', 'Adding interactive charts to your dashboard', '2025-06-20 12:15:00.123456+02'),
+('Mobile-First Dashboard', 'Adapting layouts for all devices', '2025-06-19 18:20:11.234567+02'),
+('Django Admin Customization', 'Extending the admin interface for analytics', '2025-06-18 16:30:22.345678+02'),
+('Async Data Loading', 'Improving perceived performance', '2025-06-17 11:45:33.456789+02'),
+('Security Best Practices', 'Protecting your dashboard application', '2025-06-16 14:00:44.567890+02');

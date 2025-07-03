@@ -12,7 +12,7 @@
 <div class="container">
     <h1 class="text-center my-4">Mini Dashboard</h1>
     <div class="row">
-        <div class="col-4 my-4">
+        <div class="col-3 my-4">
             <div class="card bg-info">
             <div class="card-body">
                 <h5 class="card-title text-white">Users</h5>
@@ -21,26 +21,35 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 my-4">
+        <div class="col-3 my-4">
             <div class="card bg-success">
             <div class="card-body">
                 <h5 class="card-title text-white">Revenue</h5>
-                    <p class="card-text text-white">${{Revenue}}</p>
+                    <p class="card-text text-white">${{revenue}}</p>
                     <p class="card-text text-white"><small>Date: June 12 2025</small></p>
                 </div>
             </div>
         </div>
-        <div class="col-4 my-4">
+        <div class="col-3 my-4">
             <div class="card bg-secondary">
             <div class="card-body">
                 <h5 class="card-title text-white">Errors</h5>
-                    <p class="card-text text-white">{{Errors}}</p>
+                    <p class="card-text text-white">{{errors}}</p>
+                    <p class="card-text text-white"><small>Date: June 12 2025</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 my-4">
+            <div class="card bg-warning">
+            <div class="card-body">
+                <h5 class="card-title text-white">Sessions</h5>
+                    <p class="card-text text-white">{{session}}</p>
                     <p class="card-text text-white"><small>Date: June 12 2025</small></p>
                 </div>
             </div>
         </div>
     </div>
-
+     
     <div class="row">
         <div class="col-6">
             <div class="card">
@@ -61,6 +70,46 @@
         </div>
     </div>
     <div class="row">
+    <h3 class="m-3">Recent Transactions</h3>
+    <table class="table table-striped">
+        <thead class="bg-black text-white">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ transaction.name }}</td>
+                <td>${{ transaction.amount }}</td>
+                <td>
+                    {% if transaction.status == 'Paid' %}
+                        <span class="bg-success px-2 py-1 rounded text-white">{{ transaction.status }}</span>
+                    {% elif transaction.status == 'Pending' %}
+                        <span class="bg-warning px-2 py-1 rounded">{{ transaction.status }}</span>
+                    {% elif transaction.status == 'Failed' %}
+                        <span class="bg-danger px-2 py-1 rounded text-white">{{ transaction.status }}</span>
+                    {% else %}
+                        {{ transaction.status }}
+                    {% endif %}
+                </td>
+                <td>{{ transaction.date|date:"F d, Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No transactions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <!-- <div class="row">
         <h3 class="m-3">Recent Transactions</h3>
         <table class="table table-striped">
             <thead class="bg-black text-white">
@@ -77,7 +126,7 @@
                     <td>1</td>
                     <td>John Doe</td>
                     <td>$250</td>
-                    <!-- span inline element that apply only on specific portion of text -->
+                    span inline element that apply only on specific portion of text
                     <td><span class="bg-success px-2 py-1 rounded text-white">Paid</span></td>
                     <td>June 12,2025</td>
                 </tr>
@@ -99,7 +148,7 @@
             </tbody>
 
         </table>
-    </div>
+    </div> -->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
