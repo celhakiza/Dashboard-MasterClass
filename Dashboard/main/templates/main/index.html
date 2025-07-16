@@ -98,7 +98,7 @@
                         {{ transaction.status }}
                     {% endif %}
                 </td>
-                <td>{{ transaction.date|date:"F d, Y" }}</td>
+                <td>{{ transaction.created_at|date:"F d, Y" }}</td>
             </tr>
             {% empty %}
             <tr>
