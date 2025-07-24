@@ -66,7 +66,36 @@
         </div>
       </div>
     </div>
+  <div>
+  <canvas id="myChart"></canvas>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  labels={{chartlabels|safe}}
+  quantities={{stockquantity|safe}}
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels:labels,
+      datasets: [{
+        label: 'products with large stock',
+        data:quantities,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
     <!-- Top 10 least stocked products -->
     <div class="card shadow">
       <div class="card-header bg-dark text-white">
@@ -101,3 +130,5 @@
 </body>
 
 </html>
+<!--to print django outputs in html: {{top_products}} --> 
+{{chartlabels}}

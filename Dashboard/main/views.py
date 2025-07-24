@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 from django.urls import reverse
 from django.contrib import messages
 from django.db.models import Sum
@@ -148,8 +148,10 @@ def api_statistics(request):
     total_stock = sum(int(p['stock_quantity']) for p in products)
     avg_price = round(sum(float(p['price']) for p in products)/total_products)
  # Top 10 by stock
-    top_products = sorted(products, key=lambda x: int(x['stock_quantity']),
-    reverse=False)[:10]
+    top_products = sorted(products, key=lambda x: int(x['stock_quantity']),reverse=False)[:10]
+    top_products2 = sorted(products, key=lambda x: int(x['stock_quantity']),reverse=True)[:10]
+    chartlabels = list(p['product_name'] for p in top_products2)
+    stockquantity = list(p['stock_quantity'] for p in top_products2)
     context = {
     "user": data.get("user"),
     "email": data.get("email"),
@@ -158,6 +160,32 @@ def api_statistics(request):
     "total_stock": total_stock,
     "average_price": avg_price,
     "top_products": top_products,
+    "top_products2": top_products2,
+    "chartlabels":chartlabels,
+    "stockquantity":stockquantity
+
     }
+    
     return render(request, "main/products_dashboard.html", context)
+
+def chart_data(request):
+    today = timezone.now().date()
+    labels = []
+    user_data = []
+    revenue_data = []
+    for i in range(7):
+        day = today - timedelta(days=i)
+        labels.insert(0, day.strftime("%b %d"))
+        user_count = User.objects.filter(created_at__date=day).count()
+        revenue_sum = Transaction.objects.filter(
+        created_at__date=day, status='Paid'
+        ).aggregate(total=Sum('amount'))['total'] or 0
+        user_data.insert(0, user_count)
+        revenue_data.insert(0, float(revenue_sum))
+    return JsonResponse({
+        'labels': labels,
+        'user_data': user_data,
+        'revenue_data': revenue_data,
+        })
+
 

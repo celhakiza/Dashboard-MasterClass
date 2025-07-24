@@ -23,5 +23,6 @@ urlpatterns = [
     path('',views.index,name="Home Page"),
     path('intro/',views.intro, name="Introduction"),
     path('api/',views.api, name="Api"),
-    path('api_statistics/',views.api_statistics,name="Statistics")
+    path('api_statistics/',views.api_statistics,name="Statistics"),
+    path('chart_data/',views.chart_data,name='chart')
 ]
